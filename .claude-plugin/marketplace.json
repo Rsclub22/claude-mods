@@ -1,0 +1,14 @@
+{
+  "name": "philipp-mods",
+  "owner": {
+    "name": "Philipp Wagner"
+  },
+  "description": "Philipp's mods for Claude Code",
+  "plugins": [
+    {
+      "name": "solitaire",
+      "source": "./solitaire",
+      "description": "Klondike solitaire in a pane, styled after the Microsoft Solitaire Collection, with a solver, hints, rescue and demo (English or German)"
+    }
+  ]
+}

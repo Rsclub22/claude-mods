@@ -1,0 +1,21 @@
+{
+  "name": "solitaire",
+  "version": "1.0.0",
+  "description": "Klondike solitaire in a pane, styled after the Microsoft Solitaire Collection: felt with a gradient, cards with shadows, block-letter ranks and pips, three difficulty levels, deals checked solvable by the built-in solver, hints, a solver that shows the solution, rescue (undo until solvable), auto-solve, demo, win animation. English or German.",
+  "types": "./types/index.d.ts",
+  "author": {
+    "name": "Philipp Wagner"
+  },
+  "userConfig": {
+    "language": {
+      "type": "string",
+      "title": "Language",
+      "description": "Language of the game texts (en or de)",
+      "options": [
+        "en",
+        "de"
+      ],
+      "default": "en"
+    }
+  }
+}

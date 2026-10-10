@@ -1,0 +1,3 @@
+# von der Engine beim Laden geschriebene Typdeklarationen
+.claude-plugin/types/
+node_modules/
