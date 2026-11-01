@@ -1,0 +1,29 @@
+{
+  "name": "vikunja",
+  "version": "1.0.0",
+  "description": "Vikunja task manager in Claude Code: projects, tasks, labels, comments and kanban through the Vikunja MCP server (@0xk3vin/vikunja-mcp), plus a skill that keeps one Vikunja project as the authoritative task list and a markdown checklist as its documentation.",
+  "author": {
+    "name": "Philipp Wagner"
+  },
+  "userConfig": {
+    "url": {
+      "type": "string",
+      "title": "Vikunja URL",
+      "description": "Base URL of your Vikunja instance without /api/v1, e.g. https://vikunja.example.org",
+      "required": true
+    },
+    "api_token": {
+      "type": "string",
+      "title": "API token",
+      "description": "Vikunja API token (Settings → API Tokens) with projects, tasks and labels permissions. Stored in the secure credential store.",
+      "sensitive": true,
+      "required": true
+    },
+    "project": {
+      "type": "string",
+      "title": "Default project",
+      "description": "Title of the Vikunja project the skill works in, e.g. Infra. Leave empty to be asked each time.",
+      "default": ""
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "vikunja": {
+      "command": "npx",
+      "args": ["-y", "@0xk3vin/vikunja-mcp@1.2.0"],
+      "env": {
+        "VIKUNJA_URL": "${user_config.url}",
+        "VIKUNJA_API_TOKEN": "${user_config.api_token}"
+      }
+    }
+  }
+}

@@ -9,6 +9,11 @@
       "name": "solitaire",
       "source": "./solitaire",
       "description": "Klondike solitaire in a pane, styled after the Microsoft Solitaire Collection, with a solver, hints, rescue and demo (English or German)"
+    },
+    {
+      "name": "vikunja",
+      "source": "./vikunja",
+      "description": "Vikunja task manager via MCP (@0xk3vin/vikunja-mcp): projects, tasks, labels, comments, kanban; skill keeps one project as the authoritative task list and a markdown checklist as its documentation"
     }
   ]
 }

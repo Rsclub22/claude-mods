@@ -2,6 +2,15 @@
 
 One section per mod, newest version first.
 
+## vikunja
+
+### 1.0.0 – 2026-11-01
+
+- First release: MCP server `@0xk3vin/vikunja-mcp` 1.2.0 (pinned), options `url`, `api_token` (sensitive) and
+  `project`.
+- Skill `vikunja-tasks`: Vikunja project as the authoritative task list, markdown checklist as documentation; list,
+  add (no duplicates, labels per area), finish (done + comment), import a checklist (confirmation for bulk imports).
+
 ## solitaire
 
 ### 1.0.0 – 2026-10-11
