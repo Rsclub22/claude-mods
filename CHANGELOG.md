@@ -4,6 +4,11 @@ One section per mod, newest version first.
 
 ## vikunja
 
+### 1.0.1 – 2026-11-01
+
+- Skill: warn that `tasks_update` resets fields that are not sent (description lost on a priority-only update);
+  read the task first and send `title` and `description` with every update.
+
 ### 1.0.0 – 2026-11-01
 
 - First release: MCP server `@0xk3vin/vikunja-mcp` 1.2.0 (pinned), options `url`, `api_token` (sensitive) and

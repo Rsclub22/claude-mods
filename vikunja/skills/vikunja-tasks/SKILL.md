@@ -12,6 +12,12 @@ in Vikunja.
 Tools come from the `vikunja` MCP server of this plugin (`projects_list`, `tasks_list`, `tasks_create`, `tasks_update`,
 `labels_list`, `labels_create`, `task_labels_add`, `task_comments_add`, …).
 
+## Important: updates overwrite omitted fields
+
+`tasks_update` replaces the task: fields you do not send are reset (an update with only `priority` empties the
+description). Always read the task with `tasks_get` first and send at least `title` and `description` (plus any dates,
+priority, colour you want to keep) together with the change. Relations and labels are not affected.
+
 ## Find the project
 
 1. Project title: `${user_config.project}`. If that is empty, ask the user which project to use.
@@ -34,7 +40,7 @@ Tools come from the `vikunja` MCP server of this plugin (`projects_list`, `tasks
 
 When work for a task is done and verified:
 
-1. `tasks_update` with `done: true`.
+1. `tasks_get`, then `tasks_update` with `done: true` and the current `title` and `description`.
 2. If the work produced references (PR numbers, commits, dates), add them with `task_comments_add`.
 3. Update the markdown documentation (tick the item, add the result) in the same step.
 

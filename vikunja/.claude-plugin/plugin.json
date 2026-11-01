@@ -1,6 +1,6 @@
 {
   "name": "vikunja",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vikunja task manager in Claude Code: projects, tasks, labels, comments and kanban through the Vikunja MCP server (@0xk3vin/vikunja-mcp), plus a skill that keeps one Vikunja project as the authoritative task list and a markdown checklist as its documentation.",
   "author": {
     "name": "Philipp Wagner"
