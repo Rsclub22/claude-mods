@@ -1,0 +1,26 @@
+# Test des selbst gehosteten GitHub-Runners auf ci-public (rsclub22-ci-public01).
+name: runner-test
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: [self-hosted, linux-amd64]
+    steps:
+      - name: Runner und Docker (eigenes dind)
+        run: |
+          echo "Runner: $RUNNER_NAME"
+          docker version --format 'Docker {{.Server.Version}}'
+          docker run --rm hello-world
+      - name: Bind-Mount aus dem Workspace
+        run: |
+          echo ok > probe.txt
+          docker run --rm -v "$PWD:/w" alpine cat /w/probe.txt
+      - name: Isolation (nichts Internes erreichbar)
+        run: |
+          fail=0
+          curl -sI -m 10 https://github.com | head -1 || { echo "FEHLER: Internet nicht erreichbar"; fail=1; }
+          for t in 192.168.8.111:443 192.168.8.140:53 192.168.1.101:8006 192.168.1.105:443 192.168.1.254:53 192.168.1.20:22 100.64.0.1:443; do
+            if timeout 4 bash -c "</dev/tcp/${t%:*}/${t#*:}" 2>/dev/null; then echo "FEHLER: $t erreichbar"; fail=1; else echo "zu: $t"; fi
+          done
+          if getent hosts dc01.wagnersnetz.local; then echo "FEHLER: dc01 auflösbar"; fail=1; else echo "dc01 nicht auflösbar"; fi
+          if curl -6 -sI -m 5 https://github.com >/dev/null 2>&1; then echo "FEHLER: IPv6 geht"; fail=1; else echo "kein IPv6"; fi
+          exit $fail
