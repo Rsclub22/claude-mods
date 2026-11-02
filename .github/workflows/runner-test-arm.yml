@@ -1,0 +1,21 @@
+# Test des selbst gehosteten ARM64-Runners (rsclub22-ci-arm01, Schmalkalden-Pi 5).
+name: runner-test-arm
+on: workflow_dispatch
+jobs:
+  test:
+    runs-on: [self-hosted, linux-arm64]
+    steps:
+      - name: Architektur und Docker (eigenes dind)
+        run: |
+          echo "Runner: $RUNNER_NAME"
+          uname -m
+          test "$(uname -m)" = aarch64
+          docker run --rm hello-world
+      - name: Isolation
+        run: |
+          fail=0
+          curl -sI -m 10 https://github.com | head -1 || fail=1
+          for t in 192.168.201.75:53 192.168.201.42:53 192.168.201.254:22 192.168.8.111:443 100.64.0.1:443; do
+            if timeout 4 bash -c "</dev/tcp/${t%:*}/${t#*:}" 2>/dev/null; then echo "FEHLER: $t erreichbar"; fail=1; else echo "zu: $t"; fi
+          done
+          exit $fail
